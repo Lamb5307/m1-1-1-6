@@ -1,0 +1,52 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 13.0.0.0 for Windows">
+    <link rel="stylesheet" href="style.css">
+<TITLE>誤差</TITLE>
+</HEAD>
+<BODY>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<h1>【　誤差　】</h1>
+
+<p id="buttom"><strong>表示</strong></p><br>
+コンピュータ内部では、数値表現に使えるビット数が決まっているため、演算結果に<p class="di"><b>｢誤差｣</b></p>が発生します。誤差とは、実際の数値とコンピュータ内部で表現する数値のことです。<br>
+<strong>(1)丸め誤差</strong><br>
+10進数の<p class="di"><b>｢0.1｣</b></p>を2進数で表現すると<b>｢0.00011001100110011…｣</b>と無限小数になります。この数値を浮動小数点数で表現する場合、仮数部の桁数は決められています。そのため、最下位桁より小さい部分を四捨五入や切捨て、切上げを行うときに発生する誤差を<p class="di"><b>｢丸め誤差｣</b></p>といいます。<br>
+<strong>(2)桁落ち</strong><br>
+<p class="di"><b>｢桁落ち｣</b></p>とは、ほぼ等しい数値同士の差を演算したとき、有効桁数が減少することで発生する誤差のことです。<br>
+例えば、有効桁数を仮数部4桁とした場合、0.2352-0.2351という減算を行うと、答えは0.0001になり、正規化すると0.1000×\(10^{-3}\)になり、仮数部4桁で表現されていた情報が1桁の情報に変わります。このとき、仮数部の下3桁の0は数値としては信用できない数値なので、数値の表現力としては精度が下がっており、数値への信頼度も下がります。<br>
+<strong>(3)情報落ち</strong><br>
+<p class="di"><b>｢情報落ち｣</b></p>とは、絶対値の非常に大きい数値と非常に小さい数値を演算したとき、小さい数値が無視されてしまうことで発生する誤差のことです。<br>
+例えば、\((235×10^{1})+(235×10^{-6})\)を演算する場合、2つの指数をそろえて演算する必要があります。しかし有効桁数を3桁とした場合、\((235×10^{-6})\)の情報は無視されます。<br>
+<P><IMG src="1-1-1-6-1.JPG" width="500" border="0"></P>
+
+<strong>(4)オーバーフロー・アンダーフロー</strong><br>
+<p class="di"><b>｢オーバフロー｣</b></p>とは、演算結果が数値で表現できる最大値を超えてしまうことで発生する誤差のことです。<p class="di"><b>｢あふれ｣</b></p>ともいいます。<br>
+<p class="di"><b>｢アンダーフロー｣</b></p>とは、演算結果が数値で表現できる最小値を超えてしまうことで発生する誤差のことです。<br>
+<P><IMG src="1-1-1-6-2.JPG" width="500" border="0"></P>
+
+    <script>
+        const buttom = document.getElementById('buttom');
+        const diElements = document.querySelectorAll('.di'); // クラスの要素をすべて取得
+    
+        // マウスホバー時
+        buttom.addEventListener('mouseover', () => {
+            diElements.forEach(di => {
+                di.style.opacity = '1';
+            });
+        }, false);
+    
+        // マウスが離れている時
+        buttom.addEventListener('mouseleave', () => {
+            diElements.forEach(di => {
+                di.style.opacity = '0';
+            });
+        }, false);
+    </script>
+
+</BODY>
+</HTML>
